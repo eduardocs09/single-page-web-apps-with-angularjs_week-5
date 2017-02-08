@@ -1,0 +1,45 @@
+<div class="container">
+	<form name="signUpForm" novalidate>
+		<h2>Enter your information to sign up</h2>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2">First name: </div>
+			<div class="col-xs-12 col-sm-10">
+				<input class="text-black" type="text" name="firstName" required ng-model="signUpCtrl.user.firstName">
+				<span ng-if="(signUpForm.firstName.$error.required && signUpForm.firstName.$touched)">First name is required!</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2">Last name: </div>
+			<div class="col-xs-12 col-sm-10">
+				<input class="text-black"  type="text" name="lastName" required ng-model="signUpCtrl.user.lastName">
+				<span ng-if="(signUpForm.lastName.$error.required && signUpForm.lastName.$touched)">Last name is required!</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2">Email: </div>
+			<div class="col-xs-12 col-sm-10">
+				<input class="text-black"  type="email" name="email" required ng-model="signUpCtrl.user.email">
+				<span ng-if="(signUpForm.email.$invalid && signUpForm.email.$touched)">Must be a valid email address: handle@domain format!</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2">Phone number: </div>
+			<div class="col-xs-12 col-sm-10">
+				<input class="text-black"  type="text" name="phone" required ng-model="signUpCtrl.user.phone" pattern="(\d{3})-(\d{3})-(\d{4})">
+				<span ng-if="(signUpForm.phone.$invalid && signUpForm.phone.$touched)">Phone must be in the format ###-###-####!</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2">Favorite dish: </div>
+			<div class="col-xs-12 col-sm-10">
+				<input class="text-black"  type="text" name="favouriteDish" required ng-model="signUpCtrl.user.favouriteDish">
+				<span ng-if="(signUpForm.favouriteDish.$error.required && signUpForm.favouriteDish.$touched)">Favourite dish is required!</span>
+				<span ng-if="!signUpCtrl.realMenuItem">No such menu number exists!</span>
+			</div>
+		</div>
+		<br>
+		<button class="btn text-black" ng-disabled="signUpForm.$invalid" ng-click="signUpCtrl.SignUp();">Submit</button>
+		<br><br>
+		<span ng-if="signUpCtrl.informationSaved">Your information has been saved!</span>
+	</form>
+</div>
